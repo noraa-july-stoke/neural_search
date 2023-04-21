@@ -174,4 +174,4 @@ def predict_output(input_string):
     output_index = model.predict([encoded_input]).argmax()
     return int_to_output[output_index]
 
-print(predict_output('go hame'))
+print(predict_output('hame'))
