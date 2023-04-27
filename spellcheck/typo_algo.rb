@@ -54,10 +54,7 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data)
     num_inclusions = base_word.length if num_exclusions > base_word.length
 
     likely_typo_obj = likely_typo_obj_maker()
-    
     mod_string = base_word
-
-    "question"
 
     inclusion_string_set = Set.new()
 
@@ -68,13 +65,15 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data)
         i += 1
     end
 
+    p inclusion_string_set
+    p inclusion_string_set.length
     inclusion_string_set.each { |mod_string| letter_excluder(base_word, mod_string, 0, num_exclusions, training_data)}
 
     training_data
 end
 
 
-p typo_setter("arnold", 3, 3, {})
+typo_setter("ant", 3, 3, {}).keys.length
 
 
 
