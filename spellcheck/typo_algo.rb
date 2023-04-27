@@ -65,8 +65,6 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data)
         i += 1
     end
 
-    p inclusion_string_set
-    p inclusion_string_set.length
     inclusion_string_set.each { |mod_string| letter_excluder(base_word, mod_string, 0, num_exclusions, training_data)}
 
     training_data

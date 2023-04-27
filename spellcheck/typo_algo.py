@@ -1,7 +1,11 @@
 import string
+import os
 
 def likely_typo_obj_maker():
-    with open("typo_data.txt") as f:
+
+    file_path = os.path.abspath("typo_data.txt")
+
+    with open(file_path) as f:
         file_data = [line.strip() for line in f]
 
     key_str = string.ascii_lowercase + string.digits
@@ -24,9 +28,6 @@ def inclusion_set_compiler(base_word, char, i, num_inclusions, set, training_dat
     for typo_letter in likely_typo_obj[char]:
         leftword = mod_string[:i] + typo_letter + mod_string[i + 1:]
         rightword = mod_string[:i - 1] + typo_letter + mod_string[i:]
-        # rightword = (mod_string[:i] if i > 0 else "") + typo_letter + mod_string[i:]
-        print(leftword)
-        print(rightword)
         set.add(leftword) # extra letter is to the left of the base letter
         set.add(rightword) # extra letter is to the right of the base letter
         inclusion_set_compiler(base_word, base_word[i + 2] if i < len(base_word) - 2 else None, i + 2, num_inclusions - 1, set, training_data, likely_typo_obj, leftword)
@@ -54,8 +55,6 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data):
     mod_string = base_word
 
     inclusion_string_set = set()
-    print(inclusion_string_set)
-    print(len(inclusion_string_set))
 
     for i, char in enumerate(base_word):
         inclusion_set_compiler(base_word, char, i, num_inclusions, inclusion_string_set, training_data, likely_typo_obj, base_word)
