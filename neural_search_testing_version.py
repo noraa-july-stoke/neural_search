@@ -1,11 +1,14 @@
 # Import necessary libraries:
-import tensorflow as tf
+# import tensorflow as tf
+import keras
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
 import tensorflowjs as tfjs
 import numpy as np
 from typing import List, Dict
+
+print(dir(tfjs))
 
 # Define the training data
 i_o_map = {
@@ -14,6 +17,52 @@ i_o_map = {
     'hane': '/home',
     'gohome': '/home',
     'haeme': '/home',
+    'hame': '/home',
+    'my dsahboard': '/dashboard',
+    'mt dashboard': '/dashboard',
+    'my dashboard': '/dashboard',
+    'go to my dashboard': '/dashboard',
+    'feed': '/feed',
+    'show me the feed': './feed',
+    'go to feed': '/feed',
+    'go to the feed': '/feed',
+    'ga to feed': '/feed',
+    'ga ta feed': '/feed',
+    'my notifications': '/notifications',
+    'notifications': '/notifications',
+    'messages': '/messages',
+    'profile': '/profile',
+    'settings': '/settings',
+    'create post': '/feed/new',
+    'search': '/search',
+    'jane doe': '/search?q=jane+doe',
+    'explore': '/explore',
+    'cool stuff':'/explore?category=interesting+finds',
+    'liked posts': '/liked',
+    'saved posts': '/saved',
+    'recommended': '/recommended',
+    'popular': '/popular',
+    'popl4r': '/popular',
+    'poplar': '/popular',
+    'trending': '/trending',
+    'new': '/new',
+    'top': '/top',
+    'rising': '/rising',
+    'controversial': '/controversial',
+    'hot': '/hot',
+    'random': '/random',
+    'categories': '/categories',
+    'podcasts': '/podcasts',
+    'videos': '/videos',
+    'cool videos': '/videos?category=trending+videos',
+    'articles': '/articles',
+    'news': '/news',
+    'gifs': '/gifs/latest',
+    'giphs': '/gifs/latest',
+    'memes': '/memes',
+    'books': '/books',
+    'create new note': '/notes/new',
+    'games': '/games'
 }
 
 # Derive separate lists from I/O mappings
@@ -63,4 +112,7 @@ model.compile(loss='sparse_categorical_crossentropy',
 model.fit(np.array(encoded_inputs), np.array(encoded_outputs), epochs=100, batch_size=8)
 
 # Save the model in TensorFlow.js format
+print(model.summary())
+
+# tfjs.save('model', model)
 tfjs.converters.save_keras_model(model, 'model')

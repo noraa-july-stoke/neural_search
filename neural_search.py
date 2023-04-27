@@ -35,7 +35,8 @@ i_o_map = {
     'messages': '/messages',
     'profile': '/profile',
     'settings': '/settings',
-    'create post': '/feed/new',
+    'create a new post': '/feed/new',
+    'new post': '/feed/new',
     'search': '/search',
     'jane doe': '/search?q=jane+doe',
     'explore': '/explore',
@@ -47,8 +48,6 @@ i_o_map = {
     'popl4r': '/popular',
     'poplar': '/popular',
     'trending': '/trending',
-    'new': '/new',
-    'top': '/top',
     'rising': '/rising',
     'controversial': '/controversial',
     'hot': '/hot',
@@ -57,14 +56,16 @@ i_o_map = {
     'podcasts': '/podcasts',
     'videos': '/videos',
     'cool videos': '/videos?category=trending+videos',
-    'articles': '/articles',
+    'new articles': '/articles/latest',
     'news': '/news',
-    'gifs': '/gifs/latest',
-    'giphs': '/gifs/latest',
+    'gifs': '/gifs',
+    'giphs': '/gifs',
+    'new jifs': '/gifs/latest',
     'memes': '/memes',
     'books': '/books',
     'create new note': '/notes/new',
-    'games': '/games'
+    'games': '/games',
+    'new games': '/games/latest',
 }
 
 # We are just getting the inputs and outputs from the i_o_map
@@ -126,7 +127,7 @@ model.add(Dense(len(all_outputs), activation='softmax'))
 # Compile the model
 # the loss function is sparse_categorical_crossentropy because the
 # output is a single integer value. the optimizer is Adam with a learning
-# rate of 0.001. the metrics are accuracy. the model is trained for 50
+# rate of 0.001. the metrics are accuracy. the model is trained for 100
 # epochs with a batch size of 8.
 # sparse_categorical_crossentropy:
 # https://keras.io/api/losses/probabilistic_losses/#sparse_categorical_crossentropy-function
@@ -144,7 +145,7 @@ model.compile(loss='sparse_categorical_crossentropy',
 # with a batch size of 8. the model is trained on the encoded inputs
 # and the encoded outputs.
 model.fit(np.array(encoded_inputs), np.array(
-    encoded_outputs), epochs=100, batch_size=8)
+    encoded_outputs), epochs=200, batch_size=6)
 
 # Make a prediction
 # here is where we use the model to make a prediction. we encode the
@@ -174,4 +175,4 @@ def predict_output(input_string):
     output_index = model.predict([encoded_input]).argmax()
     return int_to_output[output_index]
 
-print(predict_output('hame'))
+print(predict_output('go hane'))
