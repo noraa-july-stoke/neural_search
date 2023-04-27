@@ -66,4 +66,4 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data):
     return training_data
 
 
-print(len(typo_setter("ant", 3, 3, {})))
+# print(len(typo_setter("ant", 3, 3, {})))
