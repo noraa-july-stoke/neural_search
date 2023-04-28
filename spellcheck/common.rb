@@ -19,23 +19,26 @@ def word_processer
 
     raw_common_data = File.open("common.txt")
     file_data = raw_common_data.readlines.map(&:chomp)
+
+    output_file = File.open("training_data.txt", "w")
+    
     likely_typo_obj = likely_typo_obj_maker
 
-    training_data = {}
+    i = 1
     file_data.each do |word|
+        p "processing #{i}/#{file_data.length}"
+        i += 1
+
+        next if word == ""
         word_data = typo_setter(word.downcase, 1, 1, likely_typo_obj, {})
-        p word_data
-        training_data.merge(word_data)
+
+        word_data.each do |k,v|
+            output_file.write("#{[k,":"," ",v].join("")}\n")
+        end
+        system("clear")
     end
 
-    data_file = File.open("training_data.txt", "w")
-    p training_data
- 
-    training_data.each do |k,v|
-        # data_file.write("#{[k,":"," ",v].join("")}\n")
-        p "#{[k,":"," ",v].join("")}\n"
-        data_file.write("bob")
-    end
+
 
 end
 

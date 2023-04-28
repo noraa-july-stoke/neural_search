@@ -46,13 +46,16 @@ def typo_setter(base_word, num_exclusions, num_inclusions, likely_typo_obj, trai
     inclusion_string_set = Set.new()
 
     i = 0
+
     while i < base_word.length
         char = base_word[i]
         inclusion_set_compiler(base_word, char, i, num_inclusions, inclusion_string_set, training_data, likely_typo_obj, base_word)
         i += 1
     end
 
-    inclusion_string_set.each { |mod_string| letter_excluder(base_word, mod_string, 0, num_exclusions, training_data)}
+    inclusion_string_set.each do |mod_string| 
+        letter_excluder(base_word, mod_string, 0, num_exclusions, training_data)
+    end
 
     training_data
 end
