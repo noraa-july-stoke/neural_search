@@ -76,4 +76,4 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data):
 #ls to see container files
 
 
-# docker run -v /Users/marcoshenrich/neural_search:/neural_search -e OUTPUT_DIR=/Users/marcoshenrich/neural_search/model spellcheck-image
+# sudo docker run -v /Users/marcoshenrich/desktop/neural_search:/neural_search -e OUTPUT_DIR=/Users/marcoshenrich/desktop/neural_search/model spellcheck-image

@@ -9,7 +9,6 @@ import tensorflowjs as tfjs
 import numpy as np
 from spellcheck.typo_algo import *
 from typing import List, Dict
-print("import success")
 
 print(dir(tfjs))
 
@@ -65,6 +64,8 @@ model.fit(np.array(encoded_inputs), np.array(encoded_outputs), epochs=100, batch
 # Save the model in TensorFlow.js format
 print(model.summary())
 
+
 # tfjs.save('model', model)
-output_dir = os.environ.get('OUTPUT_DIR')
-tfjs.converters.save_keras_model(model, os.path.join(output_dir, "model"))
+# output_dir = os.environ.get('OUTPUT_DIR')
+# print(output_dir)
+tfjs.converters.save_keras_model(model, os.path.join(model, "model"))
