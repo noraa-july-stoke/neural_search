@@ -20,7 +20,7 @@ def word_processer
     raw_common_data = File.open("common.txt")
     file_data = raw_common_data.readlines.map(&:chomp)
 
-    output_file = File.open("training_data.txt", "w")
+    output_file = File.open("training_text.txt", "w")
     
     likely_typo_obj = likely_typo_obj_maker
 
