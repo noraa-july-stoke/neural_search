@@ -1,5 +1,6 @@
 # Import necessary libraries:
 # import tensorflow as tf
+import os
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
@@ -65,4 +66,5 @@ model.fit(np.array(encoded_inputs), np.array(encoded_outputs), epochs=100, batch
 print(model.summary())
 
 # tfjs.save('model', model)
-tfjs.converters.save_keras_model(model, 'model')
+output_dir = os.environ.get('OUTPUT_DIR')
+tfjs.converters.save_keras_model(model, os.path.join(output_dir, "model"))

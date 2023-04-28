@@ -67,3 +67,13 @@ def typo_setter(base_word, num_exclusions, num_inclusions, training_data):
 
 
 # print(len(typo_setter("ant", 3, 3, {})))
+
+#docker run -v /Users/marcoshenrich/neural_search:/neural_search spellcheck-image
+
+
+#docker build -t spellcheck-image .
+#docker run -it --entrypoint /bin/bash spellcheck-image
+#ls to see container files
+
+
+# docker run -v /Users/marcoshenrich/neural_search:/neural_search -e OUTPUT_DIR=/Users/marcoshenrich/neural_search/model spellcheck-image
