@@ -17,7 +17,7 @@ end
 
 def word_processer
 
-    raw_common_data = File.open("common.txt")
+    raw_common_data = File.open("1k_common.txt")
     file_data = raw_common_data.readlines.map(&:chomp)
 
     output_file = File.open("training_text.txt", "w")
@@ -33,6 +33,7 @@ def word_processer
         word_data = typo_setter(word.downcase, 1, 1, likely_typo_obj, {})
 
         word_data.each do |k,v|
+            next if k == ""
             output_file.write("#{[k,":"," ",v].join("")}\n")
         end
         system("clear")
