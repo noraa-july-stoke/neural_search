@@ -11,6 +11,7 @@ def inclusion_set_compiler(base_word, char, i, num_inclusions, set, training_dat
         inclusion_set_compiler(base_word, base_word[i + 1], i + 1, num_inclusions, set, training_data, likely_typo_obj, dupword, false)
     end
 
+    p char if !likely_typo_obj[char]
     likely_typo_obj[char].each_char do |typo_letter|
         leftword = mod_string[0...i] + typo_letter + mod_string[i + 1..-1]
         rightword = mod_string[0..i] + typo_letter + mod_string[i..-1]
